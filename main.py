@@ -16,11 +16,9 @@ def load_data_from_github(url: str) -> pd.DataFrame:
         if os.path.splitext(url)[1] == '.csv':
             data = pd.read_csv(response)
             return data
-        elif os.path.splitext(url)[1] == '.xlsx':
+        else:
             data = pd.read_excel(BytesIO(response.read()), engine='openpyxl')
             return data
-        else:
-            raise HTTPException(status_code=400, detail='Invalid file type')
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
     
