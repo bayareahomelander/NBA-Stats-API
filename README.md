@@ -34,7 +34,7 @@ Each error response will include a detail field with a message explaining the er
 ## Unit Testing
 There is a combination of unit tests to verify individual components, and integration tests to check that these components work correctly together.
 ### Testing Tools
-Tests are written using Python's unittest module, with the pytest framework to run the tests and generate reports. We use unittest.mock to isolate our components for unit testing.
+Tests are written using Python's `unittest` module, with the `pytest` framework to run the tests and generate reports. `unittest.mock` is used to isolate components for unit testing.
 ### Running the Tests
 Tests can be run locally by navigating to the project directory and executing the following command:
 
