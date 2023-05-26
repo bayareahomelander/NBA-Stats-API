@@ -1,6 +1,6 @@
 # NBA-Stats-API
 
-This is an API built using FastAPI for fetching NBA playe stats and awards data from CSV and Excel files hosted on GitHub.
+This is an API built using FastAPI for fetching NBA player stats and awards data from CSV and Excel files hosted on GitHub.
 
 ## Setup
 To run the API, install the required Python packages via pip:
