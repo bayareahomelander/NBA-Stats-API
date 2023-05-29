@@ -11,23 +11,24 @@ import asyncio
 
 app = FastAPI()
 
-async def load_data_from_github(base_url: str) -> pd.DataFrame:
+def load_data_from_github(base_url: str) -> pd.DataFrame:
     try:
-        async with httpx.AsyncClient() as client:
-            # Try to load CSV first
-            try:
-                url = base_url + '.csv'
-                response = await client.get(url)
-                data = pd.read_csv(BytesIO(response.content))
-                return data
-            except Exception:
-                pass
+        context = ssl.create_default_context(cafile=certifi.where())
 
-            # If CSV fails, try to load XLSX
-            url = base_url + '.xlsx'
-            response = await client.get(url)
-            data = pd.read_excel(BytesIO(response.content), engine='openpyxl')
+        # Try to load CSV first
+        try:
+            url = base_url + '.csv'
+            response = urllib.request.urlopen(url, context=context)
+            data = pd.read_csv(BytesIO(response.read()))
             return data
+        except Exception:
+            pass
+
+        # If CSV fails, try to load XLSX
+        url = base_url + '.xlsx?raw=true'  # Add ?raw=true for .xlsx files
+        response = urllib.request.urlopen(url, context=context)
+        data = pd.read_excel(BytesIO(response.read()), engine='openpyxl')
+        return data
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
     
@@ -104,7 +105,7 @@ async def get_all_stats(player_name: str):
 
 async def load_data_for_season(season: str, player_name: str):
     url = f'https://raw.githubusercontent.com/bayareahomelander/NBA-Stats-API/main/data/{season}'
-    data = await load_data_from_github(url)
+    data = load_data_from_github(url)
     if data.empty:
         return []
 
