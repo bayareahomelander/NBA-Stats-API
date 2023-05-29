@@ -1,6 +1,6 @@
 # NBA-Stats-API
 
-This is an API built using FastAPI for fetching NBA player stats and awards data from CSV and Excel files hosted on GitHub.
+This is an API built using FastAPI for fetching NBA player stats and awards data from CSV and Excel files hosted on GitHub. Player's average, advanced, and total stats are available from the 2000-01 season to the current season. Stats are regular season only.
 
 ## Setup
 To run the API, install the required Python packages via pip:
@@ -16,7 +16,7 @@ uvicorn main:app --reload
 - `GET /players/{player_name}`: returns a players' stats for a given season
 - `GET /players`: returns all player names for a given season
 - `GET /players/{player_name}/averages`: returns a player's average stats in a given season
-- `GET /players/{player_name}/allseason`: returns a player's stats across all seasons from 2019 to 2023
+- `GET /players/{player_name}/allseason`: returns a player's stats across all seasons from 2000 to 2023
 - `GET /top/{stat}/{season}/limit`: returns the top players in a given stat category, for a given season, limited by the 'limit' parameter
 - `GET /awards/{season}`: returns award winners in a given season
 - `GET /awards/players/{player_name}`: returns all awards for a specific player
