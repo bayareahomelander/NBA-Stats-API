@@ -5,7 +5,7 @@ This is an API built using FastAPI for fetching NBA player stats and awards data
 ## Setup
 To run the API, install the required Python packages via pip:
 ```bash
-pip install fastapi pandas ssl certifi urllib3 openpyxl uvicorn
+pip3 install fastapi pandas ssl certifi urllib3 openpyxl uvicorn
 ```
 The API can be run locally with:
 ```bash
@@ -39,7 +39,7 @@ Tests are written using Python's `unittest` module, with the `pytest` framework 
 Tests can be run locally by navigating to the project directory and executing the following command:
 
 ```bash
-pytest
+pytest test.py
 ```
 
 Installation might be needed if not already installed:
