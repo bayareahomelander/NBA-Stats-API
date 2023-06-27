@@ -5,7 +5,7 @@ This is an API built using FastAPI for fetching NBA player stats and awards data
 ## Setup
 To run the API, install the required Python packages via pip:
 ```bash
-pip3 install fastapi pandas ssl certifi urllib3 openpyxl uvicorn
+pip3 install fastapi pandas ssl certifi httpx openpyxl uvicorn
 ```
 The API can be run locally with:
 ```bash
